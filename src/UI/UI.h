@@ -6,6 +6,7 @@
 
 #ifndef UI_H_
 #define UI_H_
+#include <stdbool.h>
 int show_menu(int* choise);
 int get_cell(bool field[50][50]);
 int get_settings(int settings[3]);
