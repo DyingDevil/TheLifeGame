@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = UI.a
-BUILD_DIR = ../../bin/modules
+BUILD_DIR = ../../bin/modules/
 CFLAGS = -I$(STRUCTS_DIR) -static -O0
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)

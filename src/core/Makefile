@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = core.a
-BUILD_DIR = ../../bin/modules
+BUILD_DIR = ../../bin/modules/
 CFLAGS = -I../UI -I../settings -I../save -I../logic -I../error
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)

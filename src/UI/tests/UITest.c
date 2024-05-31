@@ -13,7 +13,7 @@ int main(){
 	int res2 = TestGetCell();
 	int res3 = TestGetSettings();
 	int res4 = TestShowMenu();
-	freopen("testIOResult.txt","w", stdout);
+	freopen("testUIResult.txt","w", stdout);
 	if(!res1){
 		printf("TestDrawField: Sucsess!\n");
 	}

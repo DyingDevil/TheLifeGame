@@ -10,4 +10,4 @@ main:
 	$(CC) $(CFLAGS) -c -o $(PLUGS_DIR)save.o save.c
 	$(CC) $(CFLAGS) -c -o $(PLUGS_DIR)logic.o logic.c
 	$(CC) $(CFLAGS) -c -o $(PLUGS_DIR)error.o error.c
-	$(CC) $(CFLAGS) -c -o $(PLUGS_DIR)core_tests.o core_tests.c
+	$(CC) $(CFLAGS) -c -o ../../../bin/tests/core_tests.o core_tests.c
