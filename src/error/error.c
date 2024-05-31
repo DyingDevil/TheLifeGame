@@ -19,7 +19,7 @@ const char* process_error(int exception) {
 		return "Error: bottomLifeVal < 0. Incorrect lower bound for the continuation of life";
 	case -6:
 		//Некорректная верхняя граница для продолжения жизни (слишком большая)
-		return "Error: topLifeVal > 8. Incorrect upper bound for the continuation of life";
+		return "Error: topLifeVal > 8. Incorrect upper bound for the continuation of life ";
 	case -7:
 		//Некорректная верхняя граница для продолжения жизни (не может быть меньше 0)
 		return "Error: topLifeVal < 0. Incorrect upper bound for the continuation of life";
