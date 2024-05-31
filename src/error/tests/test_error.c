@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-int test_process_error();
-int main(){
+#include "test_error.h"
+int TestError(){
 	int test = test_process_error();
 	freopen("file_errors.txt", "w", stdout);
 	if(!test){
@@ -11,8 +11,10 @@ int main(){
 	}
 	else{
 		printf("Fail %d", test);
+		return -1;
 	}
 	fclose(stdout);
+	return 0;
 }
 int test_process_error(){
 	const char* err1 = "Error: lifeCondition > 8. An impossible condition for the origin of life";

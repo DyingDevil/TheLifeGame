@@ -3,17 +3,19 @@
 #include<stdlib.h>
 #include <stdio.h>
 #include<conio.h>
-int test_start();
-int main(){
+#include "core_tests.h"
+int testCore(){
 	FILE*test = fopen("test.txt","w");
 	int a = test_start();
 	if(a){
 		fprintf(test,"Fail %d",a);
+		return -1;
 	}
 	else{
 		fprintf(test,"Sucsess");
 	}
 	fclose(test);
+	return 0;
 }
 int test_start(){
 	FILE*seq = fopen("seq.txt","w");

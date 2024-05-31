@@ -3,12 +3,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include<conio.h>
-int TestDrawField();
-int TestGetCell();
-int TestGetSettings();
-int TestShowMenu();
-
-int main(){
+#include "UITEst.h"
+int TestUI(){
 	int res1 = TestDrawField();
 	int res2 = TestGetCell();
 	int res3 = TestGetSettings();
@@ -19,24 +15,28 @@ int main(){
 	}
 	else{
 		printf("TestDrawField: Fail!\n");
+		return -1;
 	}
 	if(!res2){
 		printf("TestGetCell: Sucsess!\n");
 	}
 	else{
 		printf("TestGetCell: Fail! %d\n",res2);
+		return -1;
 	}
 	if(!res3){
 		printf("TestGetSettings: Sucsess!\n");
 	}
 	else{
 		printf("TestGetSettings: Fail!\n");
+		return -1;
 	}
 	if(!res4){
 		printf("TestShowMenu: Sucsess!\n");
 	}
 	else{
 		printf("TestShowMenu: Fail! %d\n",res4);
+		return -1;
 	}
 	fclose(stdout);
 
