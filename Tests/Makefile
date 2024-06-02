@@ -1,7 +1,7 @@
 CC=gcc
 MODULES_DIR = ../bin/modules/
 EXECS_DIR = ../bin/exe/
-TSTS_DIR = ../bin/Tests/
+TSTS_DIR = ../bin/tests/
 PLUGS_DIR = ../bin/tests/plugs/
 CFLAGS = -static -O0
 MODULES = UI logic error core save settings
@@ -11,17 +11,17 @@ SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 LIBS = $(addprefix -l, $(MODULES))
 all: UI logic error core save settings main
-UserIO:
+UI:
 	$(MAKE) -C ../src/UI/tests/
-RobotIO:
+logic:
 	$(MAKE) -C ../src/logic/tests/
-Storage:
+error:
 	$(MAKE) -C ../src/error/tests/
-ErrorHandler:
+core:
 	$(MAKE) -C ../src/core/tests/
-GameSystem:
+save:
 	$(MAKE) -C ../src/save/tests/
-Controller:
+settings:
 	$(MAKE) -C ../src/settings/tests/
 main:
 	$(CC) $(CFLAGS) $(DIRECTORIES_FLAGS) -c $(SRC) -o $(TSTS_DIR)$(OBJ)

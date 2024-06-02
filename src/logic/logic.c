@@ -1,10 +1,8 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include"logic.h"
-#include<Windows.h>
 
-using namespace std;
-
+bool newConfig[gridX][gridY] = { 0, };
 
 
 int errorHandler(int lifeCondition, int bottomLifeVal, int topLifeVal)
@@ -14,9 +12,6 @@ int errorHandler(int lifeCondition, int bottomLifeVal, int topLifeVal)
 	}
 	else if (lifeCondition < 0) {
 		return -2;
-	}
-	else if (bottomLifeVal > topLifeVal) {
-		return -3;
 	}
 	else if (bottomLifeVal > 8) {
 		return -4;
@@ -30,14 +25,15 @@ int errorHandler(int lifeCondition, int bottomLifeVal, int topLifeVal)
 	else if (topLifeVal < 0) {
 		return -7;
 	}
-	else if (topLifeVal < 0) {
-		return -7;
+	else if (bottomLifeVal > topLifeVal) {
+		return -3;
 	}
 	else {
 		return 0;
 	}
 }
-int myMod(int x,int y) {
+
+int myMod(int x, int y) {
 	if (x >= 0) {
 		return x % y;
 	}
@@ -45,20 +41,21 @@ int myMod(int x,int y) {
 		return (x + 100) % y;
 	}
 }
+
 int get_cells(bool cellConfig[gridX][gridY], int lifeCondition, int bottomLifeVal, int topLifeVal)
 {
-	bool newConfig[gridX][gridY] = { 0, };
 	int error = errorHandler(lifeCondition, bottomLifeVal, topLifeVal);
 	if (error) {
 		return error;
 	}
+
 	for (int i = 0; i < gridX; ++i) {
 		for (int j = 0; j < gridY; ++j) {
 			int count = 0;
 			for (int x = -1; x < 2; ++x) {
 				for (int y = -1; y < 2; ++y) {
-					int realX = myMod(i + x, gridX);
-					int realY = myMod(j + y, gridY);
+					int realX = myMod((i + x), (gridX));
+					int realY = myMod((j + y), (gridY));
 					if (cellConfig[realX][realY] && !(x==0 && y==0)) {
 						count++;
 					}
@@ -82,11 +79,13 @@ int get_cells(bool cellConfig[gridX][gridY], int lifeCondition, int bottomLifeVa
 			}
 		}
 	}
+
 	for (int i = 0; i < gridX; ++i) {
 		for (int j = 0; j < gridY; ++j) {
 			cellConfig[i][j] = newConfig[i][j];
 		}
 	}
+
 	return error;
 }
 

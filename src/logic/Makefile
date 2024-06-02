@@ -1,5 +1,5 @@
-CC = gcc
-TARGET = error.a
+CC=gcc
+TARGET = logic.a
 BUILD_DIR = ../../bin/modules/
 CFLAGS = -static -O0
 SRC = $(wildcard *.c)
