@@ -2,7 +2,7 @@
 #include<stdbool.h>
 #include"logic.h"
 #include<Windows.h>
-
+#include"Testlogic.h"
 int LTestsCount = 1;
 
 int ruleTests[4] = { -1, 2, 3, 9 };

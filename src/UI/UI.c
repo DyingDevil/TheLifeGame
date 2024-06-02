@@ -1,14 +1,8 @@
-/*
- * UI.c
- *
- *      Author: Alex Yevstifeev
- */
 #include <Windows.h>
 #include "UI.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <conio.h>
- // сделать функцию для считывания имени файла настроек и прогресса игры
 int show_menu(int* choise) {
 	system("CLS");
 	*choise = 0;

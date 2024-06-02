@@ -1,6 +1,6 @@
 #include "error.h"
 
-const char* process_error(int exception) {
+char* process_error(int exception) {
 	switch (exception) {
 	case -1:
 		//около 1 клетки не может быть задано больше 8 живых клеток для условия зарождения жизни

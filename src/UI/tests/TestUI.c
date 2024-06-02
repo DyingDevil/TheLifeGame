@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "UI.h"
+#include "TestUI.h"
 #include <stdlib.h>
 #include <stdbool.h>
 #include<conio.h>
-#include "UITEst.h"
 int TestUI(){
 	int res1 = TestDrawField();
 	int res2 = TestGetCell();

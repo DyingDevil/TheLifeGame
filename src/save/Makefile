@@ -1,7 +1,7 @@
-CC=gcc
-TARGET = UI.a
+CC = gcc
+TARGET = save.a
 BUILD_DIR = ../../bin/modules/
-CFLAGS = -static -O0
+CFLAGS = -I$(STRUCTS_DIR) -static -O0
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 TARGET_LIB = lib$(TARGET)

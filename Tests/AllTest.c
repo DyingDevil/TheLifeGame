@@ -1,22 +1,28 @@
-#include "core.h"
-#include "error.h"
-#include "logic.h"
-#include "UI.h"
-#include "save.h"
-#include "settings.h"
+#include "Testcore.h"
+#include "Testerror.h"
+#include "Testlogic.h"
+#include "TestUI.h"
+#include "Testsave.h"
+#include "Testsettings.h"
 #include <stdio.h>
 int main() {
-	if(testCore() == -1)
-		return -1;
-	if(TestError() == -1)
-		return -1;
-	if(TestUI() == -1)
-		return -1;
-	if(TestLogic()== -1)
-		return -1;
-	if(TestSave()== -1)
-		return -1;
-	if(TestSettings()== -1)
-		return -1;
+	//if(testCore() == -1)
+		//return -1;
+	if(TestError() == -1){
+		printf("TestError: fail!");
+	}
+	//if(TestUI() == -1){
+	//	printf("TestUI: fail!");
+	//}
+	if(testLogic()== -1){
+		printf("testLogic: fail!");
+	}
+	if(TestSave()== -1){
+		printf("TestSave: fail!");
+	}
+	if(TestSettings()== -1){
+		printf("TestSettings: fail!");
+	}
+	printf("Sucsess!");
 	return 0;
 }

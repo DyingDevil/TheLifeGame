@@ -1,0 +1,10 @@
+###########
+# 1.   Start    #
+# 2. Set rules  #
+# 3. Set cells  #
+# 4. Load game  #
+# 5. Load rules #
+# 6. Save game  #
+# 7. Save rules #
+# 8.    Exit    #
+#################

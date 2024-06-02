@@ -3,18 +3,17 @@
 #include<stdlib.h>
 #include <stdio.h>
 #include<conio.h>
-#include "core_tests.h"
-int testCore(){
-	FILE*test = fopen("test.txt","w");
+#include "Testcore.h"
+int main(){
 	int a = test_start();
 	if(a){
-		fprintf(test,"Fail %d",a);
+		printf("TestCore: Fail %d", a);
 		return -1;
 	}
 	else{
-		fprintf(test,"Sucsess");
+		printf("TestCore: Sucsess");
 	}
-	fclose(test);
+	system("pause");
 	return 0;
 }
 int test_start(){

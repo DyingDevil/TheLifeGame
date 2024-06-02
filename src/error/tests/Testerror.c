@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "test_error.h"
+#include "Testerror.h"
 int TestError(){
 	int test = test_process_error();
 	freopen("file_errors.txt", "w", stdout);

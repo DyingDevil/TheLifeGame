@@ -1,0 +1,4 @@
+TestDrawField: Sucsess!
+TestGetCell: Sucsess!
+TestGetSettings: Sucsess!
+TestShowMenu: Fail! -9
