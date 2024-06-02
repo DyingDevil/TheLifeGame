@@ -7,17 +7,16 @@
 int main(){
 	int a = test_start();
 	if(a){
-		printf("TestCore: Fail %d", a);
+		printf("TestCore: Fail %d\n", a);
 		return -1;
 	}
 	else{
-		printf("TestCore: Sucsess");
+		printf("TestCore: Sucsess\n");
 	}
-	system("pause");
 	return 0;
 }
 int test_start(){
-	FILE*seq = fopen("seq.txt","w");
+	FILE* seq = fopen("seq.txt","w");
 	fprintf(seq,"2 3 4 5 6 7 1 8");
 	fclose(seq);
 	FILE*button = fopen("button.txt","w");
@@ -26,8 +25,9 @@ int test_start(){
 	freopen("seq.txt","r",stdin);
 	freopen("output.txt","w",stdout);
 	start();
-	fclose(stdout);
-	fclose(stdin);
+	freopen("CON", "w", stdout);
+	freopen("seq.txt","r",stdin);
+	remove("seq.txt");
 	FILE*check = fopen("output.txt","r");
 	const char*s1 = "get_settings";
 	const char*s2 = "get_cell";

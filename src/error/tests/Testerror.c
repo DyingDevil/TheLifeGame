@@ -5,15 +5,13 @@
 #include "Testerror.h"
 int TestError(){
 	int test = test_process_error();
-	freopen("file_errors.txt", "w", stdout);
 	if(!test){
-		printf("Sucsess");
+		printf("	test_process_error: Sucsess!\n");
 	}
 	else{
-		printf("Fail %d", test);
+		printf("	test_process_error: Fail %d\n", test);
 		return -1;
 	}
-	fclose(stdout);
 	return 0;
 }
 int test_process_error(){

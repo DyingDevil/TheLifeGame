@@ -9,38 +9,37 @@ int TestUI(){
 	int res2 = TestGetCell();
 	int res3 = TestGetSettings();
 	int res4 = TestShowMenu();
-	freopen("testUIResult.txt","w", stdout);
+	int count = 0;
 	if(!res1){
 		printf("TestDrawField: Sucsess!\n");
 	}
 	else{
 		printf("TestDrawField: Fail!\n");
-		return -1;
+		count++;
 	}
 	if(!res2){
 		printf("TestGetCell: Sucsess!\n");
 	}
 	else{
 		printf("TestGetCell: Fail! %d\n",res2);
-		return -1;
+		count++;
 	}
 	if(!res3){
 		printf("TestGetSettings: Sucsess!\n");
 	}
 	else{
 		printf("TestGetSettings: Fail!\n");
-		return -1;
+		count++;
 	}
 	if(!res4){
 		printf("TestShowMenu: Sucsess!\n");
 	}
 	else{
 		printf("TestShowMenu: Fail! %d\n",res4);
-		return -1;
+		count++;
 	}
-	fclose(stdout);
 
-	return 0;
+	return -count;
 }
 int TestShowMenu(){
 	unsigned char* expected = "#################\n# 1.   Start    #\n# 2. Set rules  #\n# 3. Set cells  #\n# 4. Load game  #\n# 5. Load rules #\n# 6. Save game  #\n# 7. Save rules #\n# 8.    Exit    #\n#################\n";
@@ -51,12 +50,12 @@ int TestShowMenu(){
 	freopen("testShowMenuIn.txt","r", stdin);
 	freopen("testShowMenuOut.txt","w", stdout);
 	show_menu(&a);
+	freopen("CON","w", stdout);
 	if(a != 1){
-		fclose(stdout);
 		fclose(stdin);
 		return -1;
 	}
-	fclose(stdout);
+	freopen("TrashData.txt","w", stdout);
 	show_menu(&a);
 	if(a != 2){
 		fclose(stdin);
@@ -92,12 +91,15 @@ int TestShowMenu(){
 		fclose(stdin);
 		return -8;
 	}
+	remove("TrashData.txt");
+	freopen("CON","w", stdout);
 	fclose(stdin);
 	FILE* comparison = fopen("testShowMenuOut.txt", "r");
 	fgetc(comparison);
 	for(int i = 0; i < 180; i++){
 		unsigned char get = fgetc(comparison);
 		if(expected[i]!=get){
+			fclose(comparison);
 			return -9;
 		}
 	}
@@ -130,7 +132,7 @@ int TestDrawField(){
 	}
 	expected[51][101] = 188;
 	
-	for (int i = 9; i < 19; ++i) {/////////////////////////////////////////////////////////
+	for (int i = 9; i < 19; ++i) {
 		expected[3][i] = 176;
 	}
 	// for (int i = 0; i < 52; ++i) {
@@ -143,32 +145,26 @@ int TestDrawField(){
 	
 	
 	bool field[50][50] = {0, };
-	for (int i = 4; i < 9; ++i) {/////////////////////////////////////////////////////////
+	for (int i = 4; i < 9; ++i) {
 		field[2][i] = 1;
 	}
 	freopen("testIODraw.txt","w", stdout);
 	draw_field(field,0);
-	fclose(stdout);
-	
-	printf("Started comparison!\n");
+	freopen("CON","w", stdout);
 	FILE* comparison = fopen("testIODraw.txt", "r");
+	freopen("CON","w", stdout);
 	for(int i = 0; i<52;++i){
 		for(int j = 0; j<102;++j){
 			unsigned char curSymb = fgetc(comparison);
 			if(curSymb!=expected[i][j]){
 				fclose(comparison);
-				freopen("testIODrawResult.txt","w", stdout);
-				printf("\nError1! Wrong symbol!");
-				printf("\t%d\t%d",i,j);
-				printf("\t%c\t%c",curSymb,expected[i][j]);
-				printf("\t%d\t%d",curSymb,expected[i][j]);
-				fclose(stdout);
+
+				remove("testIODraw.txt");
 				return -1;
 			}
 		}
 		getc(comparison);
 	}
-	
 	fclose(comparison);
 	remove("testIODraw.txt");
 	
@@ -182,6 +178,7 @@ int TestGetCell(){
 	FILE* testInput = fopen("GetUserArtificialData1.txt","w");
 	fprintf(testInput,"5 5 y 6 7 n 78 a");
 	fclose(testInput);
+	freopen("TrashData.txt","w", stdout);
 	freopen("GetUserArtificialData1.txt","r",stdin);
 	if(!get_cell(field)){
 		for(int i = 0; i < 50; i++){
@@ -201,6 +198,7 @@ int TestGetCell(){
 		fclose(stdin);
 		return -3;
 	}
+	remove("TrashData.txt");
 	fclose(stdin);
 	remove("GetUserArtificialData1.txt");
 	return 0;
