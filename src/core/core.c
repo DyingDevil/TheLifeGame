@@ -105,10 +105,11 @@ int start() {
 }
 int play(int set[3], bool fiel[50][50]) {
 	int ctr = 0;
+	int error = 0;
 	draw_field(fiel, ctr);
 	while (button_is_not_pressed()) {  //до нажатия кнопки цикл работает
 		ctr++;
-		int error = get_cells(fiel, set[0], set[1], set[2]);
+		error = get_cells(fiel, set[0], set[1], set[2]);
 		if (error) {
 			const char* st_err = process_error(error);
 			printf("%s", st_err);
